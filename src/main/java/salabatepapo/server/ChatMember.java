@@ -23,12 +23,12 @@ public class ChatMember implements Runnable {
 		
 			String linha = "";
 			while (!(linha = scanner.nextLine()).toLowerCase().equals("sair")) {
-				String mensagem = nickname + ": " + linha + "\n";
-				System.out.println(mensagem);
-				conexao.getOutputStream().write(mensagem.getBytes());
+				String mensagem = nickname + ": " + linha;
+				Participantes.enviarMensagem(mensagem);
 			}
 			
 			conexao.getOutputStream().write("Bye bye!".getBytes());
+			Participantes.sair(nickname);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
