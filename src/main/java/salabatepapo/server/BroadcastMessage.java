@@ -22,6 +22,9 @@ public class BroadcastMessage implements Runnable {
 		try {
 			conexao.getOutputStream().write((mensagem + '\n').getBytes());
 		} catch (IOException e) {
+			if (conexao.isClosed())
+				Participantes.sair(nickname);
+			
 			e.printStackTrace();
 		}
 	}
