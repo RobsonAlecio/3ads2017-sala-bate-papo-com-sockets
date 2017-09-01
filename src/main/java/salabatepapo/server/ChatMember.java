@@ -27,7 +27,7 @@ public class ChatMember implements Runnable {
 				Participantes.enviarMensagem(mensagem);
 			}
 			
-			conexao.getOutputStream().write("Bye bye!".getBytes());
+			conexao.getOutputStream().write("Bye bye!\n".getBytes());
 			Participantes.sair(nickname);
 		} catch (IOException e) {
 			e.printStackTrace();

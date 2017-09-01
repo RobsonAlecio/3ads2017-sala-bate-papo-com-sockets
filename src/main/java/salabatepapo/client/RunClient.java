@@ -5,10 +5,12 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
+import salabatepapo.Port;
+
 public class RunClient {
 
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		Socket socket = new Socket("localhost", 7030);
+		Socket socket = new Socket("localhost", Port.NUMBER);
 		socket.getOutputStream().write((new Scanner(System.in).nextLine() + "\n").getBytes());
 		
 		new Thread(new MessageReceiver(socket)).start();
